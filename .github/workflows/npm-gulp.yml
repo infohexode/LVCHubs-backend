@@ -27,5 +27,5 @@ jobs:
       working-directory: ./dist 
       run: | 
         npm i
-     - run: sudo cp -r /root/actions-runner/ip-172-31-88-175/_work/LVCHubs-backend/LVCHubs-backend/dist/* /root/LVCHubs-backend/   
+     - run: cp -r /root/actions-runner/ip-172-31-88-175/_work/LVCHubs-backend/LVCHubs-backend/dist/* /root/LVCHubs-backend/   
     
