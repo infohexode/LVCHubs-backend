@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const profile = require('./model');
-// const { STATUS } = require('./const');
 
 const profileDbHelper = {};
 

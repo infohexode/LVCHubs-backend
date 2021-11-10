@@ -19,7 +19,7 @@ router.post('/update',(req, res, next) => {
 
 router.delete('/delete/:id', (req, res, next) => {
     return controller.delete(req.params.id)
-            .then((success) => res.status(200).send('Entery Deleted'))
+            .then((success) => res.status(200).send('Entry Deleted'))
             .catch((err) => next(err));
 });
 
@@ -28,9 +28,5 @@ router.get('/getAll', (req, res, next) =>{
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
 });
-
-
-
-
 
 module.exports = router;

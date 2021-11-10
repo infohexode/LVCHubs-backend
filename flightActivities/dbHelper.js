@@ -5,7 +5,6 @@ const flightActivitiesDbHelper = {};
 
 flightActivitiesDbHelper.save = async (activitiesInput) => {
     try {
-       
             const model = new flightActivities(activitiesInput);   
             await model.save();  
             return 'saved';
@@ -45,7 +44,5 @@ flightActivitiesDbHelper.getAll = async () => {
         return Promise.reject(err);
     }
 }
-
-
 
 module.exports = flightActivitiesDbHelper;

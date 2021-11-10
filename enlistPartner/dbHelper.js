@@ -5,7 +5,6 @@ const enlistPartnerDbHelper = {};
 
 enlistPartnerDbHelper.save = async (enlistPartnerInput) => {
     try {
-       
             const model = new enlistPartner(enlistPartnerInput);   
             await model.save();  
             return 'saved';
@@ -33,8 +32,6 @@ enlistPartnerDbHelper.updateStatus = async (id, PartnerStatus , comment) => {
         return Promise.reject(err);
     }
 }
-
-
 
 enlistPartnerDbHelper.delete = async (id) => {
     try {

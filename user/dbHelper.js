@@ -35,8 +35,6 @@ usersDbHelper.save = async (usersInput) => {
                 });
 
             } else {
-                // return res.status(400).send('email exist');
-
                 return 'email exist';
             }
         });
@@ -122,8 +120,7 @@ usersDbHelper.validate = async (model) => {
                 }
                 return { match };
             }
-
-            return ("user not exist");
+            return ("user does not exist");
         });
 
     } catch (err) {

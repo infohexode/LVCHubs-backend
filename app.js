@@ -18,6 +18,8 @@ import enlistPartnerRouter from './enlistPartner/route';
 import profileRouter from './profile/route';
 import loyaltyRewardRouter from './loyaltyReward/route';
 import paymentProofRouter from './paymentProof/route';
+import savingsWalletRouter from './savingsWallet/route';
+import adminWalletRouter from './adminWallet/route';
 
 
 
@@ -71,6 +73,9 @@ app.use('/enlistPartner' ,enlistPartnerRouter);
 app.use('/profile' ,profileRouter);
 app.use('/loyaltyReward' ,loyaltyRewardRouter);
 app.use('/paymentProof' ,paymentProofRouter);
+
+app.use('/savingsWallet' ,savingsWalletRouter); 
+app.use('/adminWallet' ,adminWalletRouter);
 
 
 

@@ -1,16 +1,12 @@
 const viewModel = require('./viewModel');
 import dbHelper from './dbHelper';
 import userDbHelper, { getActiveStatus } from '../user/dbHelper';
-// import {sendMail, kycUploadOption, 
-//     confirmKycOption, rejectKycOption} from '../helper/sendGridEMail';
-// import { STATUS, KYCUPDATED, KYCINVALIDDATA } from './const';
 
 const profile = {};
 
 
 profile.add = async (req) => {
     try {
-        // const kycInfo = await kyc.getKycByUserId(req);
         const profileViewModel = viewModel.createViewModel({...req.body ,userId:req.decoded.id}, req.files);
         await dbHelper.save(profileViewModel);
         return {msg:'saved'};

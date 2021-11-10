@@ -62,6 +62,8 @@ validate() called in controller to validate the user on login.
 */
 router.post('/login', (req, res, next) => {    
     return controller.validate(req.body).then((response) => {
+        if (response==="user does not exist")
+        return res.status(400).json({ data : response});
         return res.status(200).json({ data: response });
     }).catch((err) => {
         next(err);

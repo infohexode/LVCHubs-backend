@@ -5,7 +5,6 @@ const activitiesDbHelper = {};
 
 activitiesDbHelper.save = async (activitiesInput) => {
     try {
-       
             const model = new activities(activitiesInput);   
             await model.save();  
             return 'saved';

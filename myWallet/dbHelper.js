@@ -39,7 +39,6 @@ myWalletDbHelper.getloyaltyPoint = async () => {
     }
 }
 
-
 myWalletDbHelper.walletSummary = async () => {
     try {
         return myWallet.find({})
@@ -51,9 +50,6 @@ myWalletDbHelper.walletSummary = async () => {
         return Promise.reject(err);
     }
 }
-
-
-
 
 myWalletDbHelper.getuserId = async () => {
     try {
@@ -89,11 +85,6 @@ myWalletDbHelper.updateLockedLvc = async (userid ,Tokens) => {
 // }
 
 
-
-
-
-
-
 myWalletDbHelper.getLvcLockedBalance = async (userid) => {
     try {
         return myWallet.find({"userId":userid})
@@ -110,8 +101,6 @@ myWalletDbHelper.getLvcLockedBalance = async (userid) => {
     }
 }
 
-
-
 myWalletDbHelper.getLvcLockedBalance = async (id) => {
     try {
         return await myWallet.find({"userId":id})
@@ -126,7 +115,16 @@ myWalletDbHelper.getLvcLockedBalance = async (id) => {
     }
 }
 
-
-
+// myWalletDbHelper.getMyWalletBalance = async () => {
+//     try {
+//         return myWallet.find({})
+//         .exec()
+//         .then((results) => {
+//             return results
+//         });
+//     } catch (err) {
+//         return Promise.reject(err);
+//     }
+// }
 
 module.exports = myWalletDbHelper;
