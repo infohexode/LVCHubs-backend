@@ -54,7 +54,7 @@ userController.addAdmin();
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(urlencoded({ extended: true }));
 app.use(json());
 app.use(express.static(path.join(__dirname, 'public')));
