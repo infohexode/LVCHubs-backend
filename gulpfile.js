@@ -13,6 +13,9 @@ var build_files_paths = {
         vacationActivities_path: ['./vacationActivities/*.js'],
         loyaltyReward_path: ['./loyaltyReward/*.js'],
         myWallet_path: ['./myWallet/*.js'],
+        adminWallet_path: ['./adminWallet/*.js'],
+        savingsWallet_path: ['./savingsWallet/*.js'],
+        transactionHistory_path: ['./transactionHistory/*.js'],
         test_path: ['./test/*.js'],
         helper_path: ['./helper/*.js'],
         public_js_path: ['./public/**/*.js'],
@@ -150,6 +153,33 @@ gulp.task('copySsl', function () {
                 .pipe(gulp.dest('dist/ssl'));
 });
 
+gulp.task('minifyadminWallet', function () {
+        return gulp.src(build_files_paths.adminWallet_path)
+                .pipe(babel({
+                        presets: ['@babel/preset-env']
+                }))
+                .pipe(uglify())
+                .pipe(gulp.dest('dist/adminWallet'));
+});
+
+gulp.task('minifysavingsWallet', function () {
+        return gulp.src(build_files_paths.savingsWallet_path)
+                .pipe(babel({
+                        presets: ['@babel/preset-env']
+                }))
+                .pipe(uglify())
+                .pipe(gulp.dest('dist/savingsWallet'));
+});
+
+gulp.task('minifytransactionHistory', function () {
+        return gulp.src(build_files_paths.transactionHistory_path)
+                .pipe(babel({
+                        presets: ['@babel/preset-env']
+                }))
+                .pipe(uglify())
+                .pipe(gulp.dest('dist/transactionHistory'));
+});
+
 gulp.task('minifymyWallet', function () {
         return gulp.src(build_files_paths.myWallet_path)
                 .pipe(babel({
@@ -182,4 +212,4 @@ gulp.task('build', gulp.series('clean', 'copynojs', 'copyimage',
         'minifyroot', 'minifyconfig', 'copyEnv', 'minifyprofile',
         'minifypaymentProof', 'minifytest', 'minifymyWallet', 'minifyloyaltyReward',
         'minifyvacationActivities','copySsl', 'minifyflightActivities','minifyenlistPartner',
-        'minifyactivities'));
+        'minifyactivities','minifytransactionHistory','minifysavingsWallet','minifyadminWallet'));
