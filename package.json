@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon --exec babel-node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist",
+    "copy":"cp ./package.json dist/",
+    "build": "npm run clean && babel ./src -d ./dist --copy-files --include-dotfiles && npm run copy  && cd dist && zip -r ../distApp.zip * .[^.]* && cd .. && echo \"Package built: distApp.zip\""
   },
   "author": "hexode",
   "license": "ISC",
