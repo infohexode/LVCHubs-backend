@@ -51,12 +51,12 @@ router.post('/getLvcLockedBalance',(req, res, next) => {
     }).catch((err) => next(err));
 });
 
-router.get('/getLvcLockedBalance/:id', function(req, res, next) {
-    return controller.getLvcLockedBalance(req.params.id).then((results) => {
-        console.log(results);
-        return res.status(200).json({ data : results });
-    }).catch((err) => next(err));
-});
+// router.get('/getLvcLockedBalance/:id', function(req, res, next) {
+//     return controller.getLvcLockedBalance(req.params.id).then((results) => {
+//         console.log(results);
+//         return res.status(200).json({ data : results });
+//     }).catch((err) => next(err));
+// });
 
 // router.get('/getMyWalletBalance',(req, res, next) => {
 //     return controller.getMyWalletBalance().then((results) => {

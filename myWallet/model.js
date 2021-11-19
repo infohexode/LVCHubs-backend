@@ -9,13 +9,15 @@ const myWalletSchema = new Schema({
     },
     lvcLocked:{
         type: Number,
-        enum: LVCLOCKBALANCE,
-        default: LVCLOCKBALANCE[0]
+        // enum: LVCLOCKBALANCE,
+        // default: LVCLOCKBALANCE[0]
+        default: LVCLOCKBALANCE
     },
     LvcBalance: {
         type: Number,
-        enum: LVCBALANCE,
-        default: LVCBALANCE[0]  
+        // enum: LVCBALANCE,
+        // default: LVCBALANCE[0]  
+        default: LVCBALANCE
     },
     // type: {         
     //     type: String

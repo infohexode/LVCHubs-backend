@@ -67,13 +67,13 @@ myWallet.getLvcLockedBalance = async (body) => {
 }
 
 
-myWallet.getLvcLockedBalance = async (id) => {
-    try {
-        return await dbHelper.getLvcLockedBalance(id);
-    } catch (err) {
-        return Promise.reject(err);
-    }
-}
+// myWallet.getLvcLockedBalance = async (id) => {
+//     try {
+//         return await dbHelper.getLvcLockedBalance(id);
+//     } catch (err) {
+//         return Promise.reject(err);
+//     }
+// }
 
 // myWallet.getMyWalletBalance = async () => {
 //     try {

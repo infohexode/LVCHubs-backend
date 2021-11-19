@@ -1,13 +1,13 @@
-// const dbHelper = require('./dbHelper');
-// const transactionHistory = {};
+const dbHelper = require('./dbHelper');
+const transactionHistory = {};
 
-// transactionHistory.getBalance = async () => {
-//     try {
-//         return await dbHelper.getBalance();
-//     } catch (err) {
-//         return Promise.reject(err);
-//     }
-// }
+transactionHistory.get = async () => {
+    try {
+        return await dbHelper.get();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
 
 
-// module.exports = transactionHistory;
+module.exports = transactionHistory;

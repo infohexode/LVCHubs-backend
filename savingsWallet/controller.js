@@ -9,13 +9,20 @@ savingsWallet.getBalance = async () => {
     }
 }
 
-// savingsWallet.updateBalance = async (req) => {
-//     try {
-//         return await dbHelper.updateBalance(req.body);
-//     } catch (err) {
-//         return Promise.reject(err);
-//     }
-// }
+savingsWallet.deposit = async () => {
+    try {
+        return await dbHelper.deposit();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
 
+savingsWallet.withdraw = async () => {
+    try {
+        return await dbHelper.withdraw();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
 
 module.exports = savingsWallet;

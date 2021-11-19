@@ -5,8 +5,7 @@ const savingsWalletSchema = new Schema({
 
     balance: {
         type: Number,
-        enum: LVCBALANCE,
-        default: LVCBALANCE[0]  
+        default: LVCBALANCE  
     },
 
     userId: {         /* *stores the userId of the user */  

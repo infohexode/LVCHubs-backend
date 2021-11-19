@@ -317,4 +317,23 @@ export const decodeString = (data)=> {
    return buff.toString('utf8');
 }
 
-
+export const balanceLow = (userInfo) => {
+   return {
+      "from": {
+         "email": process.env.adminEmail
+      },
+      "personalizations": [
+         {
+            "to": [
+               {
+                  "email": userInfo.email
+               }
+            ],
+            "dynamic_template_data": {
+               "username": userInfo.fisrtname
+            }
+         }
+      ],
+      "template_id": process.env.passwordUpdateTemplateId
+   }
+}

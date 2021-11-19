@@ -85,9 +85,9 @@ myWalletDbHelper.updateLockedLvc = async (userid ,Tokens) => {
 // }
 
 
-myWalletDbHelper.getLvcLockedBalance = async (userid) => {
+myWalletDbHelper.getLvcLockedBalance = async (userid,lockedBalance) => {
     try {
-        return myWallet.find({"userId":userid})
+        return myWallet.find({"userId":userid,"lockedBalance":lockedBalance})
             .exec()
             .then((results) => {
                 return results.map((result) => {
@@ -101,19 +101,19 @@ myWalletDbHelper.getLvcLockedBalance = async (userid) => {
     }
 }
 
-myWalletDbHelper.getLvcLockedBalance = async (id) => {
-    try {
-        return await myWallet.find({"userId":id})
-            .exec()
-            .then((results) => {
-                return results.map((result) => {
-                return result;
-                });
-            });
-    } catch (err) {
-        return Promise.reject(err);
-    }
-}
+// myWalletDbHelper.getLvcLockedBalance = async (id) => {
+//     try {
+//         return await myWallet.find({"userId":id})
+//             .exec()
+//             .then((results) => {
+//                 return results.map((result) => {
+//                 return result;
+//                 });
+//             });
+//     } catch (err) {
+//         return Promise.reject(err);
+//     }
+// }
 
 // myWalletDbHelper.getMyWalletBalance = async () => {
 //     try {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLvcLockedBalance } from '../myWallet/controller';
+import { getloyaltyPoint, getLvcLockedBalance } from '../myWallet/controller';
 import { getBalance } from './controller';
 const savingsWallet = require('./model');
 const _ = require('lodash');
@@ -17,22 +17,49 @@ savingsWalletDbHelper.getBalance = async () => {
     }
 }
 
-// export const updateBalance = async() => {
-//     try {
-//         const balance = await getMyWalletBalance();
-//         const lockedBalance = await getLvcLockedBalance(); 
-//         const sw = await getBalance();
-//         const myb = balance - lockedBalance;
-//         const swb = sw + lockedBalance;
+savingsWalletDbHelper.deposit = async() => {
+    try {
+        const balance = await getloyaltyPoint();
+        const lockedBalance = await getLvcLockedBalance(); 
+        const sw = await savingsWalletDbHelper.getBalance();
+        const myb = balance - lockedBalance;
+        const swb = sw + lockedBalance;
+        return{
+            myb,
+            swb
+        };
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
 
-//         return{
-//             myb,
-//             swb
+savingsWalletDbHelper.withdraw = async() => {
+    try {
+        const balance = await getloyaltyPoint();
+        const lockedBalance = await getLvcLockedBalance(); 
+        const sw = await savingsWalletDbHelper.getBalance();
+        const myb = balance + lockedBalance;
+        const swb = sw - lockedBalance;
+        return{
+            myb,
+            swb
+        };
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
 
-//         };
-   
-//     } catch (error) {
-//         return Promise.reject(error);
-//     }
-// }
+export const interest = async () => {
+    try {
+        const interest_ = await getBalance();
+        const rate = process.env.rate;
+        const time = process.env.time;
+        const int_amt = ((interest_*rate*time)/100);
+        return int_amt;
+ 
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
+
 module.exports = savingsWalletDbHelper;
