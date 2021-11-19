@@ -2,5 +2,5 @@
 Vaccation Hub_Hexode
 #run on local machine
 1. npm install
-2. npm run start
+2. npm run dev
 

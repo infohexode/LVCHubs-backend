@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon --exec babel-node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build && gulp zip"
   },
   "author": "hexode",
   "license": "ISC",
