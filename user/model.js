@@ -12,7 +12,7 @@ const userSchema = new Schema({
     },
     firstname: {         /* *stores the name of the user */
         type: String,
-        required: true
+       // required: true
     },
     lastname: {         /* *stores the name of the user */
         type: String

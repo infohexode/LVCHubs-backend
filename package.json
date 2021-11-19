@@ -1,9 +1,8 @@
 {
-  "name": "minget",
+  "name": "LVCHubs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon --exec babel-node app.js",
