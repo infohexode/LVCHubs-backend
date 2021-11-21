@@ -103,7 +103,13 @@ usersDbHelper.validate = async (model) => {
                 const payload = {
                     userName: u.name,
                     id: u._id,
-                    email: u.email
+                    email: u.email,
+                    firstname: u.firstname,
+                    lastname: u.lastname,
+                    userStatus: u.userStatus,
+                    active: u.active,
+                    createdDate: u.createdDate,
+                    modifiedDate: u.modifiedDate
                 };
                 const options = { expiresIn: '1d', issuer: 'https://lvchubs.com'};
 
@@ -156,7 +162,19 @@ usersDbHelper.getUsersById = async (id) => {
         return await users.find({ _id: id })
             .exec()
             .then((results) => {
-                return results.length === 1 ? results[0] : null;
+                return results.map((result) => {
+                    return {
+                        email: result.email,
+                        firstname: result.firstname,
+                        lastname: result.lastname,
+                        userStatus: result.userStatus,
+                        active: result.active,
+                        _id: result.id,
+                        createdDate: result.createdDate,
+                        modifiedDate: result.modifiedDate
+                    }
+                });
+                // return results.length === 1 ? results[0] : null;
             });
     } catch (err) {
         return Promise.reject(err);
