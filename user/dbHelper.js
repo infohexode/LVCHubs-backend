@@ -109,7 +109,8 @@ usersDbHelper.validate = async (model) => {
                     userStatus: u.userStatus,
                     active: u.active,
                     createdDate: u.createdDate,
-                    modifiedDate: u.modifiedDate
+                    modifiedDate: u.modifiedDate,
+                    role: u.role
                 };
                 const options = { expiresIn: '1d', issuer: 'https://lvchubs.com'};
 
