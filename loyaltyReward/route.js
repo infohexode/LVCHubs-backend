@@ -11,20 +11,20 @@ router.post('/add',authenticator.validateToken,(req, res, next) => {
     }).catch((err) => next(err));
 });
 
-router.get('/getAll',(req, res, next) => {
+router.get('/getAll',authenticator.validateToken,(req, res, next) => {
     return controller.getAll().then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
 });
 
-router.get('/getLoyaltyById/:id', (req, res, next) => {
+router.get('/getLoyaltyById/:id',authenticator.validateToken, (req, res, next) => {
     return controller.getLoyaltyById(req.params.id).then((results) => {
         console.log(results);
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
 });
 
-router.post('/updateStatus',(req, res, next) => {
+router.post('/updateStatus',authenticator.validateToken,(req, res, next) => {
     return controller.updateStatus(req.body).then((response) => {
         return res.status(200).json({ message: response });
     }).catch((err) => {

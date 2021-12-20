@@ -33,7 +33,7 @@ loyaltyRewardDbHelper.getAll = async () => {
 
 loyaltyRewardDbHelper.getLoyaltyById = async (id) => {
     try {
-        return await loyaltyReward.find({"_id":id, "active":true })
+        return await loyaltyReward.find({"userId":id, "active":true })
             .exec()
             .then((results) => {
                 return results.map((result) => {

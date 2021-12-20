@@ -2,22 +2,7 @@ import {Schema, model} from 'mongoose';
 import { STATUS ,LVCBALANCE} from './const';
 
 const loyaltyRewardSchema = new Schema({
-    title: { 
-        type: String,
-        required: true
-    },  
-    firstname: {             
-        type: String,
-        required: true
-    },
-    lastname: {             
-        type: String,
-        required: true
-    },
-    phoneNumber: {             
-        type: Number,
-        required: true
-    },
+   
     numberOfTokens: {            
         type: Number,
         required: true
@@ -30,14 +15,6 @@ const loyaltyRewardSchema = new Schema({
         type: Number,
         enum: LVCBALANCE,
         default: LVCBALANCE[0]
-    },
-    city: {            /* *stores city of the user */ 
-        type: String,
-        required: true
-    },
-    nationality: {           
-        type: String,
-        required: true
     },
     active:{            /* *by default the active status of the entries is true */
         type:Boolean,
