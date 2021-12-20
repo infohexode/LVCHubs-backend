@@ -88,7 +88,7 @@ router.post('/sign-out', (req, res, next) => {
 /*
 fetches all the users list. 
 */
-router.get('/getAll',function(req, res, next) {
+router.get('/getAll', authenticator.validateToken,function(req, res, next) {
     return controller.getAll().then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));

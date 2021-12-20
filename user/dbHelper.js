@@ -80,7 +80,7 @@ find() fetches all the users list.
 usersDbHelper.getAll = async () => {
     try {
         return users.find({})
-            .exec()
+            .select("-password","-__v")
             .then((results) => {
                 return results.map((result) => {
                     return result;
