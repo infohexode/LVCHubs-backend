@@ -39,9 +39,22 @@ paymentProof.updateStatus = async (body) => {
 }
 
 
+paymentProof.getAllProofs = async (body) => {
+    try {
+        return await dbHelper.getAll();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
 
 
-
+paymentProof.getProofById = async (id) => {
+    try {
+        return await dbHelper.getProofById(id);
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
 
 
 

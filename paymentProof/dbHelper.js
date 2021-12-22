@@ -23,6 +23,45 @@ paymentProofDbHelper.updateStatus = async (id, PaymentStatus) => {
     }
 }
 
+paymentProofDbHelper.getAll = async () => {
+    try {
+        return paymentProof.find({})
+            .then((results) => {
+                return results.map((result) => {
+                    return result;
+                });
+            });
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
+
+paymentProofDbHelper.getProofById = async (id) => {
+    try {
+        return await paymentProof.find({ _id: id })
+            .exec()
+            .then((results) => {
+                return results.map((result) => {
+                    return {
+                        paymentAmount: result.paymentAmount,
+                        paymentInfo: result.paymentInfo,
+                        PaymentProofPhoto: result.PaymentProofPhoto,
+                        userId: result.userId,
+                        status: result.status,
+                        createdDate: result.createdDate,
+                        modifiedDate: result.modifiedDate,
+                        active: result.active,
+                        _id: result.id
+                    }
+                });
+                
+            });
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
 
 module.exports = paymentProofDbHelper;
 

@@ -5,6 +5,7 @@ import controller from './controller';
 
 import authenticator from '../helper/auth';
 import upload from '../helper/upload';
+import { response } from 'express';
 
 router.post('/add',authenticator.validateToken,(req, res, next)=>{
     upload.setFilesStoragePath([ 
@@ -28,6 +29,19 @@ router.post('/updateStatus',(req, res, next) => {
 });
 
 
+router.get('/getAll', (req,res,next) => {
+    return controller.getAllProofs(req.body).then((results) =>{
+        return res.status(200).json({ data: results });
+    }).catch((err) =>{
+        next(err);
+    })
+});
+
+router.get('/getProofById/:id', function(req, res, next) {
+    return controller.getProofById(req.params.id).then((results) => {
+        return res.status(200).json({ data: results });
+    }).catch((err) => next(err));
+});
 
 
 
