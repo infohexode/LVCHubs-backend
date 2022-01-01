@@ -106,7 +106,7 @@ router.get('/getUserTypes', authenticator.validateToken, function(req, res, next
 /*
 getUsersById() returns users details by its id.
 */
-router.get('/getUsersById/:id', function(req, res, next) {
+router.get('/getUsersById/:id', authenticator.validateToken,function(req, res, next) {
     return controller.getUsersById(req.params.id).then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));

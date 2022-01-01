@@ -36,9 +36,9 @@
     "winston-daily-rotate-file": "^4.5.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.14.6",
-    "@babel/node": "^7.14.7",
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/node": "^7.16.7",
     "@babel/preset-env": "^7.14.7",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
@@ -46,6 +46,6 @@
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.15"
   }
 }

@@ -19,27 +19,27 @@ const profileSchema = new Schema({
     },
     title: { 
         type: String,
-        required: true
+      
     },
     DOB: {              /* *stores date of birth of the user */
         type: Date,
-        required: true
+        
     },
     Address: {          /* *stores address of the user */
         type: String,
-        required: true
+        
     },
     postalCode: {       /* *stores pincode of the user */
         type: Number,
-        required: true
+       
     },
     state: {            /* *stores on which state the user lives */
         type: String,
-        required: true
+        
     },
     city: {            /* *stores city of the user */ 
         type: String,
-        required: true
+        
     },
     profilePhoto: {    /* *stores the profile image of the user */
         type: String

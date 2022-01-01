@@ -4,7 +4,12 @@ import {sendMail,signUpOption, decodeString,
     confirmMailOption, resetPasswordOption,
     passwordUpdateOption} from '../helper/sendGridEMail';
 
+import {
+    addUser
+} from '../profile/controller';
+
 const dbHelper = require('./dbHelper');
+
 
 const users = {};
 
@@ -15,7 +20,9 @@ A mail is send by the function sendMail to the user to confirm the email.
 users.add = async (req) => {
     try {
         const res = await dbHelper.save(req.body);
+        
         const userInfo = await dbHelper.getUsersByEmail(req.body.email);
+        await addUser(req,userInfo._id);
         await sendMail(signUpOption(userInfo));
         return res;
     } catch (err) {

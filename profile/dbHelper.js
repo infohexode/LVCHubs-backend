@@ -15,11 +15,21 @@ profileDbHelper.save = async (profileInput) => {
     }
 }
 
-
-profileDbHelper.update = async (id,ProfileInput) => {
+profileDbHelper.update = async (userId,ProfileInput) => {
     try {
-        await profile.updateOne({ _id:id}, {phone:ProfileInput.phone
-            ,profilePhoto:ProfileInput.profilePhoto,modifiedDate : Date.now()});
+        await profile.updateOne({ userId:userId}, {
+            DOB : ProfileInput.DOB,
+    title : ProfileInput.title,
+    firstname : ProfileInput.firstname,
+    lastname : ProfileInput.lastname,
+    phone : ProfileInput.phone,
+    affiliateCode : ProfileInput.affiliateCode,
+    Address: ProfileInput.Address,
+    postalCode: ProfileInput.postalCode,
+    state : ProfileInput.state,
+    city : ProfileInput.city,
+    nationality : ProfileInput.nationality,
+   profilePhoto:ProfileInput.profilePhoto,modifiedDate : Date.now()});
         
     } catch (err) {
         return Promise.reject(err);

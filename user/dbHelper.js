@@ -60,19 +60,6 @@ usersDbHelper.getUserEmailBy = async () => {
     }
 }
 
-// usersDbHelper.addReferalLink = async (Input) => {
-//     try {
-
-//         const url = `${process.env.frontEndHttpPath}/ref/${Input.id.toString()}`;
-//         console.log(url);
-//         const {referTo} = Input;
-//         await users.updateOne({ _id:Input.id}, {referalLink:url},
-//        {referTo:Input.emails,referTo:Input.names});
-
-//     } catch (err) {
-//         return Promise.reject(err);
-//     }
-// }
 
 /*
 find() fetches all the users list.
@@ -196,6 +183,19 @@ usersDbHelper.getUsersByEmail = async (email) => {
         return Promise.reject(err);
     }
 }
+
+usersDbHelper.getUsersIdByEmail = async (email) => {
+    try {
+        return await users.find({ "email": email })
+            .exec()
+            .then((results) => {
+                return results.length === 1 ? results[0]._id : {};
+            });
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
 
 /*
 *updateOne() updates the user password.

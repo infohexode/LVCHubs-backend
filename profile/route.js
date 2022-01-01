@@ -7,20 +7,26 @@ import authenticator from '../helper/auth';
 import upload from '../helper/upload';
 
 
-router.post('/add',authenticator.validateToken,(req, res, next)=>{
-    upload.setFilesStoragePath([ 
-        process.env.profilePhotoStoragePath
-        ]);
-    next();
-    },
-    upload.saveImage, (req, res, next) => {
-    return controller.add(req).then((result) => {
-        return res.status(200).json({ data: result });
-    }).catch((err) => next(err));
-});
+// router.post('/add',authenticator.validateToken,(req, res, next)=>{
+//     upload.setFilesStoragePath([ 
+//         process.env.profilePhotoStoragePath
+//         ]);
+//     next();
+//     },
+//     upload.saveImage, (req, res, next) => {
+//     return controller.add(req).then((result) => {
+//         return res.status(200).json({ data: result });
+//     }).catch((err) => next(err));
+// });
 
 
-router.post('/update',authenticator.validateToken,upload.saveImage,(req, res, next) => {
+router.post('/update',authenticator.validateToken,(req, res, next)=>{
+        upload.setFilesStoragePath([ 
+            process.env.profilePhotoStoragePath
+            ]);
+         next();
+         },
+       upload.saveImage, (req, res, next) => {
     return controller.update(req)
             .then((success) => (res.status(200).json('Successfully updated')))
             .catch((err) => next(err));
