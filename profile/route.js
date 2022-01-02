@@ -34,14 +34,14 @@ router.post('/update',authenticator.validateToken,(req, res, next)=>{
 
 
 
-router.get('/getProfileById/:id', (req, res, next) => {
+router.get('/getProfileById/:id',authenticator.validateToken, (req, res, next) => {
     return controller.getProfileById(req.params.id).then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
 });
 
 
-router.get('/getAll', (req, res, next) =>{
+router.get('/getAll', authenticator.validateToken, (req, res, next) =>{
     return controller.getAll().then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
