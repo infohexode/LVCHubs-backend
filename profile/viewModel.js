@@ -13,8 +13,11 @@ profileViewModel.createViewModel = (body, files) =>{
     viewModel.state = body.state;
     viewModel.city = body.city;
     viewModel.nationality = body.nationality;
+    if(files[0]!=undefined)
     viewModel.profilePhoto =  new Date()+" "+`${process.env.serverAddress}/profilePhoto/${files[0].originalname}`;
-    return viewModel; 
+    else
+    viewModel.profilePhoto =null;
+     return viewModel; 
 }
 
 profileViewModel.createUserViewModel = (body,id) =>{
