@@ -19,7 +19,10 @@ enlistPartnerViewModel.createViewModel = (body, files) =>{
     viewModel.keyGoals = body.keyGoals;  
     viewModel.hearAboutUs = body.hearAboutUs;  
     viewModel.userId = body.userId;
+    if(files[0]!=undefined)
     viewModel.logo =  new Date()+" "+`${process.env.serverAddress}/logo/${files[0].originalname}`;
+    else
+    viewModel.logo =null;
     return viewModel; 
 }
 module.exports = enlistPartnerViewModel;

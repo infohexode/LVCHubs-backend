@@ -15,11 +15,16 @@ const storage = multer.diskStorage({
       callback(null, storagePath);
     },
     filename: (req, file, callback) => {
+      if(file!=undefined){
       const extension = path.extname(file.originalname);
       const baseName = path.parse(file.originalname).name;
       const updatedFile = `${baseName}_${Date.now()}${extension}`;
       file.originalname = updatedFile;
       callback(null, updatedFile);
+      }
+      else{
+        callback(null, null); 
+      }
     }
   });
   
@@ -32,10 +37,10 @@ const storage = multer.diskStorage({
  */  
 uploadFile.saveImage = (req, res, next) => {
   count = 0;
-  upload(req, res, (err) => {
-    if (err) return Promise.reject(err);
-    next();
-  });
+      upload(req, res, (err) => {
+      if (err) return Promise.reject(err);
+      next();
+    });
 }
 
 /*
