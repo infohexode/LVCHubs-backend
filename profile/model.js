@@ -10,8 +10,8 @@ const profileSchema = new Schema({
         type: String,
         required: true
     },
-    phone: {             
-        type: Number,
+    phoneNumber: {             
+        type: String,
         //required: true
     },
     affiliateCode: {

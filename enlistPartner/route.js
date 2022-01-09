@@ -43,7 +43,7 @@ router.get('/getPartnerById/:id', (req, res, next) => {
     }).catch((err) => next(err));
 });
 
-router.get('/getAll', (req, res, next) =>{
+router.get('/getAll',authenticator.validateToken, (req, res, next) =>{
     return controller.getAll().then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));

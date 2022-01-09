@@ -40,7 +40,7 @@ profileDbHelper.update = async (userId,ProfileInput) => {
 
 profileDbHelper.getProfileById = async (id) => {
     try {
-        return await profile.find({"_id":id, "active":true })
+        return await profile.find({"userId":id, "active":true })
             .exec()
             .then((results) => {
                 return results.map((result) => {
