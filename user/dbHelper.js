@@ -23,7 +23,7 @@ usersDbHelper.save = async (usersInput) => {
     try {
         return users.countDocuments({ email: usersInput.email }).then((count) => {
             if (count === 0) {
-                
+               
                 usersInput.password = usersInput.password || defaultPassword;
                 return bcrypt.hash(usersInput.password, saltRounds).then((encryptedPassword) => {
 
@@ -36,10 +36,14 @@ usersDbHelper.save = async (usersInput) => {
 
 
                     const obj = new users(newUser);
-                    return obj.save().then(() => { 
-                         addUser(usersInput,obj._id);
+                    obj.save().then(() => { 
+                       
                         return obj; });
+                       
+                        addUser(usersInput,obj._id);
+                        return obj;
                 });
+
 
             } else {
                 return 'email exist';
@@ -184,6 +188,7 @@ usersDbHelper.getUsersByEmail = async (email) => {
         return await users.find({ "email": email })
             .exec()
             .then((results) => {
+                console.log(results);
                 return results.length === 1 ? results[0] : {};
             });
     } catch (err) {

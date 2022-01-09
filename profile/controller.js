@@ -15,10 +15,11 @@ profile.add = async (req) => {
     }
 }
 
-profile.addUser = async (req,id) => {
+profile.addUser = async (obj,id) => {
     try {
-        const profileViewModel = viewModel.createUserViewModel({...req.body ,userId:id});
-        console.log(id);
+        
+        const profileViewModel = viewModel.createUserViewModel({obj ,userId:id});
+       
         await dbHelper.save(profileViewModel);
         return {msg:'saved'};
     } catch (err) {

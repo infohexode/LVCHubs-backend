@@ -20,12 +20,13 @@ profileViewModel.createViewModel = (body, files) =>{
      return viewModel; 
 }
 
-profileViewModel.createUserViewModel = (body,id) =>{
+profileViewModel.createUserViewModel = (obj) =>{
     const viewModel = {};
-    viewModel.firstname = body.firstname;
-    viewModel.lastname = body.lastname;
-    viewModel.phoneNumber = body.phoneNumber;
-    viewModel.userId = body.userId;;
+
+    viewModel.firstname = obj.obj.firstname;
+    viewModel.lastname = obj.obj.lastname;
+    viewModel.phoneNumber = obj.obj.phoneNumber;
+    viewModel.userId = obj.userId;
     return viewModel; 
 }
 

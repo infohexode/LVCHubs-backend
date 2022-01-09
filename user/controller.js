@@ -16,10 +16,8 @@ A mail is send by the function sendMail to the user to confirm the email.
 users.add = async (req) => {
     try {
         const res = await dbHelper.save(req.body);
-        
-        const userInfo = await dbHelper.getUsersByEmail(req.body.email);
-      
-        await sendMail(signUpOption(userInfo));
+       
+        await sendMail(signUpOption(res));
         return res;
     } catch (err) {
         return Promise.reject(err);
