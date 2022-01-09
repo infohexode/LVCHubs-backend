@@ -19,9 +19,7 @@ var build_files_paths = {
         test_path: ['./test/*.js'],
         helper_path: ['./helper/*.js'],
         public_js_path: ['./public/**/*.js'],
-        public_image_path: ['./public/img/*'],
-        public_profile_path: ['./public/profilePhoto/*'],
-        public_logo_path: ['./public/logo/*'],
+        public_image_path: ['./public/*'],
         nonJs: ['package.json'],
         config: ['./config/*'],
         envCopy: ['./config/.env.production', './config/.env.development', './config/.env.test'],
@@ -41,17 +39,7 @@ gulp.task('copynojs', function () {
 
 gulp.task('copyimage', function () {
         return gulp.src(build_files_paths.public_image_path)
-                .pipe(gulp.dest('dist/public/img'));
-});
-
-gulp.task('copyprofileimage', function () {
-        return gulp.src(build_files_paths.public_profile_path)
-                .pipe(gulp.dest('dist/public/profilePhoto'));
-});
-
-gulp.task('copylogoimage', function () {
-        return gulp.src(build_files_paths.public_logo_path)
-                .pipe(gulp.dest('dist/public/logo'));
+                .pipe(gulp.dest('dist/public'));
 });
 
 gulp.task('minifypublicjs', function () {
@@ -219,7 +207,7 @@ gulp.task('minifyprofile', function () {
                 .pipe(gulp.dest('dist/profile'));
 });
 
-gulp.task('build', gulp.series('clean', 'copynojs','copyprofileimage','copylogoimage', 'copyimage',
+gulp.task('build', gulp.series('clean', 'copynojs','copyimage',
         'minifypublicjs', 'minifyuser', 'minifyhelper',
         'minifyroot', 'minifyconfig', 'copyEnv', 'minifyprofile',
         'minifypaymentProof', 'minifytest', 'minifymyWallet', 'minifyloyaltyReward',

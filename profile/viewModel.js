@@ -24,7 +24,7 @@ profileViewModel.createUserViewModel = (body,id) =>{
     const viewModel = {};
     viewModel.firstname = body.firstname;
     viewModel.lastname = body.lastname;
-    viewModel.phone = body.phone;
+    viewModel.phoneNumber = body.phoneNumber;
     viewModel.userId = body.userId;;
     return viewModel; 
 }

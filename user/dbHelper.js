@@ -11,6 +11,10 @@ const { decodeString } = require('../helper/sendGridEMail');
 const usersDbHelper = {};
 const defaultPassword = 'crptox123#';
 
+import {
+    addUser
+} from '../profile/controller';
+
 /*
 Here the save function takes the usersInput and save the users data.
 and the status of the user is initailly pending.
@@ -19,6 +23,7 @@ usersDbHelper.save = async (usersInput) => {
     try {
         return users.countDocuments({ email: usersInput.email }).then((count) => {
             if (count === 0) {
+                
                 usersInput.password = usersInput.password || defaultPassword;
                 return bcrypt.hash(usersInput.password, saltRounds).then((encryptedPassword) => {
 
@@ -31,7 +36,9 @@ usersDbHelper.save = async (usersInput) => {
 
 
                     const obj = new users(newUser);
-                    return obj.save().then(() => { return obj; });
+                    return obj.save().then(() => { 
+                         addUser(usersInput,obj._id);
+                        return obj; });
                 });
 
             } else {
