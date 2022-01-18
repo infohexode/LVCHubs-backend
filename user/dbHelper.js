@@ -96,7 +96,7 @@ generates a token.
 usersDbHelper.validate = async (model) => {
     try {
         return users.findOne({ email: model.email }).exec().then((u) => {
-            console.log('model.password, user.password', u);
+         
             if (u) {
                 const payload = {
                     userName: u.name,
@@ -114,7 +114,6 @@ usersDbHelper.validate = async (model) => {
 
                 const secret = ""+ process.env.JWT_SECRET;
                 const token = jwt.sign(payload, secret, options);
-console.log(token);
                 const match = bcrypt.compareSync(model.password, u.password);
                 if (match) {
                     return u.updateOne({ token }).then(() => {
@@ -188,7 +187,6 @@ usersDbHelper.getUsersByEmail = async (email) => {
         return await users.find({ "email": email })
             .exec()
             .then((results) => {
-                console.log(results);
                 return results.length === 1 ? results[0] : {};
             });
     } catch (err) {

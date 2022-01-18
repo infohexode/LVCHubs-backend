@@ -38,17 +38,12 @@ router.get('/test-get', async(req, res, next) => {
  router.post('/postRouteTesting',(req,res,next)=>
  {
      const body = req.body;
-     console.log(body.name);
     
      return res.status(200).send(req.body);
  })
 
  router.post('/employeeTable',(req,res,next)=>{
      const body = req.body;
-     console.log(body.name);
-     console.log(body.password);
-     console.log(body.email);
-     console.log(body.organizationName);
      return res.status(200).send(req.body);
  })
 

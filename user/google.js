@@ -15,8 +15,6 @@ const client = new OAuth2Client(CLIENT_ID);
 export const googleAuth = async (req, res, next) => {
 try {
             const token = req.body.token;
-            console.log(token);
-            console.log("verify")
             const ticket = await client.verifyIdToken({idToken: token,audience: CLIENT_ID});
             const payload = ticket.getPayload();
             const userid = payload['sub'];
@@ -28,8 +26,7 @@ try {
             if(!existUser){
               /*if user doesn't exist then create new user according to model
             else return token of newUser
-            if exist return token of existUser*/
-                console.log("user not exist");    
+            if exist return token of existUser*/   
                 const newUser = new model({
                 socialMediaId: google_id,
                 socialMediaName: GOOGLE,
@@ -37,13 +34,10 @@ try {
                 name: name,
                 imageUrl: imgurl
               });
-              console.log(newUser);
               await newUser.save();
-              console.log("new user saved");  
               
               return res.status(200).json({token: tokenForUser(newUser),name:newUser.name,id:newUser._id,url:newUser.imageUrl,email:newUser.email, loginFrom: "Google"});
             }
-            console.log("user exist");
             
             return res.status(200).json({token: tokenForUser(existUser),name:existUser.name,id:existUser._id,url:existUser.imageUrl,email:existUser.email, loginFrom: "Google"});
         }catch(error){

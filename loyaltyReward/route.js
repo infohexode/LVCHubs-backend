@@ -19,7 +19,6 @@ router.get('/getAll',authenticator.validateToken,(req, res, next) => {
 
 router.get('/getLoyaltyById/:id',authenticator.validateToken, (req, res, next) => {
     return controller.getLoyaltyById(req.params.id).then((results) => {
-        console.log(results);
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
 });

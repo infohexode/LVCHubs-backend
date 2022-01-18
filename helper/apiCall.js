@@ -21,7 +21,6 @@ export const post = async (url, options) => {
         const { data } = await axios.post(url, options);
         return data;
     } catch (err) {
-        console.log(err);
         return err;
     }
 }

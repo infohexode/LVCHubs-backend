@@ -301,7 +301,6 @@ export const sendMail = async (options) => {
       const { data } = await axios.post(url, options, config);
       return data;
    } catch (err) {
-      console.log(err);
       return err;
    }
 }
