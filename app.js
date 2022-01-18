@@ -61,6 +61,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/static', { dotfiles: 'allow' }));
 app.use('/test', testRouter);
 
+/** this route is used in AWS Health check */
+app.get("/healthCheck", (req, res) => {
+  return res.status(200).send("Good");
+});
+
 app.use('/user', userRouter);
 
 
